@@ -1,2 +1,2 @@
-# ai-the-anh-multiapp
-A multi-app Streamlit suite for business automation and AI tools. Includes PromptBot, file dow nloader, tax lookup, and personal GPT assistant.
+# AI Thế Anh – Multi-App Suite
+Ứng dụng gồm 4 tính năng: PromptBot, Tải file, Tra cứu MST, Chat Assistant.
