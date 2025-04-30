@@ -1,4 +1,13 @@
 import streamlit as st
+
+# ✅ Hiển thị logo dùng chung
+from pathlib import Path
+logo_path = Path("logo.png")
+if logo_path.exists():
+    col1, col2, col3 = st.columns([3, 2, 3])
+    with col2:
+        st.image(str(logo_path), use_container_width=True)
+
 from openai import OpenAI
 import os
 
@@ -77,6 +86,7 @@ if prompt := st.chat_input("Bạn nhập nội dung cần trao đổi ở đây 
     # Tạo phản hồi từ API OpenAI
     response = ""
     model = rfile("module_chatgpt.txt").strip()
+    messages = st.session_state.messages
     st.write("✅ Model đang dùng:", model)
 
     stream = client.chat.completions.create(
