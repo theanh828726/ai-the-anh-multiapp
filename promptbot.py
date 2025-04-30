@@ -90,7 +90,7 @@ style_tags = {
 # ⚙️ UI Setup
 # ===========================
 st.set_page_config(page_title="PromptBot All-in-One", layout="wide")
-st.title(":robot_face: PromptBot: Chat 💬 + Form 🗘️ + Công thức 📋")
+st.title(":robot_face: PromptBot: All-in-One: Trợ lý tạo hình ảnh đa năng 📋")
 
 mode = st.sidebar.selectbox("😊 Chế độ sử dụng", ["💬 Chatbot", "🗘️ Form truyền thống", "📋 Prompt công thức"])
 style_group = st.sidebar.selectbox("🎨 Nhóm phong cách:", list(style_categories.keys()))
