@@ -64,22 +64,21 @@ if prompt := st.chat_input("Bạn nhập nội dung cần trao đổi ở đây 
 
     # ----- Gọi OpenAI API -----
     response = ""
-    model = rfile("module_chatgpt.txt").strip()
-    st.success(f"✅ Model đang dùng: {model}")
+response_box = st.empty()  # tạo vùng hiển thị duy nhất
 
-    try:
-        stream = client.chat.completions.create(
-            model=model,
-            messages=st.session_state.messages,
-            stream=True
-        )
+try:
+    stream = client.chat.completions.create(
+        model=model,
+        messages=st.session_state.messages,
+        stream=True
+    )
 
-        for chunk in stream:
-            if chunk.choices and chunk.choices[0].delta.content:
-                response += chunk.choices[0].delta.content
-                st.markdown(f'<div class="assistant">{response}</div>', unsafe_allow_html=True)
+    for chunk in stream:
+        if chunk.choices and chunk.choices[0].delta.content:
+            response += chunk.choices[0].delta.content
+            response_box.markdown(f'<div class="assistant">{response}</div>', unsafe_allow_html=True)
 
-    except Exception as e:
-        st.error(f"❌ Lỗi khi gọi OpenAI: {e}")
+except Exception as e:
+    st.error(f"❌ Lỗi khi gọi OpenAI: {e}")
 
-    st.session_state.messages.append({"role": "assistant", "content": response})
+st.session_state.messages.append({"role": "assistant", "content": response})
