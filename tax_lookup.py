@@ -8,6 +8,7 @@ if logo_path.exists():
     with col2:
         st.image(str(logo_path), use_container_width=True)
 
+import streamlit as st
 import pandas as pd
 import requests
 import time
