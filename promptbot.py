@@ -1,6 +1,7 @@
 # 🚀 PromptBot All-in-One: Trợ lý hình ảnh đa chức năng 📋
 
 import streamlit as st
+st.set_page_config(page_title="PromptBot All-in-One", layout="wide")
 # ✅ Hiển thị logo dùng chung
 from pathlib import Path
 logo_path = Path("logo.png")
