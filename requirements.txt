@@ -1,9 +1,5 @@
 streamlit
-pandas
-requests
-openpyxl
-selenium
-webdriver-manager
-moviepy
 openai
-Pillow
+pandas
+pillow
+requests
