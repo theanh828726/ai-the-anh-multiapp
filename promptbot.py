@@ -1,3 +1,4 @@
+import io
 
 # 🚀 PromptBot All-in-One: 3 Chế độ - Chat 💬 + Form 🗘️ + Công Thức 📋
 
@@ -6,12 +7,15 @@ from openai import OpenAI
 from datetime import datetime
 import pandas as pd
 import random
+from moviepy.editor import ImageClip, TextClip, CompositeVideoClip
 from io import BytesIO
 import requests
 import os
 from PIL import Image
 
 # ✅ API Key GPT
+openai_api_key = st.secrets["OPENAI_API_KEY"]
+client = OpenAI(api_key=openai_api_key)
 
 # ===========================
 # 📜 Danh sách style + tag
