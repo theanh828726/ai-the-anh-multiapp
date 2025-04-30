@@ -1,3 +1,5 @@
+# 🚀 PromptBot All-in-One: 3 Chế độ - Chat 💬 + Form 🗘️ + Công Thức 📋
+
 import streamlit as st
 
 # ✅ Hiển thị logo dùng chung
@@ -7,8 +9,6 @@ if logo_path.exists():
     col1, col2, col3 = st.columns([3, 2, 3])
     with col2:
         st.image(str(logo_path), use_container_width=True)
-
-# 🚀 PromptBot All-in-One: 3 Chế độ - Chat 💬 + Form 🗘️ + Công Thức 📋
 
 import streamlit as st
 from openai import OpenAI
