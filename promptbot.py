@@ -1,4 +1,3 @@
-
 # 🚀 PromptBot All-in-One: 3 Chế độ - Chat 💬 + Form 🗘️ + Công Thức 📋
 
 import streamlit as st
@@ -6,7 +5,6 @@ from openai import OpenAI
 from datetime import datetime
 import pandas as pd
 import random
-from moviepy.editor import ImageClip, TextClip, CompositeVideoClip
 from io import BytesIO
 import requests
 import os
@@ -113,3 +111,25 @@ if mode == "📋 Prompt công thức":
         prompt_en = prompt_vn
         st.success(f"**🇻🇳 Prompt tiếng Việt:** {prompt_vn}")
         st.code(f"{prompt_en}", language="markdown")
+
+# =======================
+# 🎨 Tạo ảnh từ DALL·E
+# =======================
+def generate_image(prompt, size="1024x1024"):
+    response = client.images.generate(
+        model="dall-e-3",
+        prompt=prompt,
+        size=size,
+        quality="standard",
+        n=1
+    )
+    return response.data[0].url
+
+with st.expander("🖼️ Tạo ảnh với DALL·E"):
+    with st.form("dalle_form"):
+        image_prompt = st.text_input("Mô tả hình ảnh muốn tạo:")
+        create = st.form_submit_button("Tạo ảnh 🎨")
+        if create and image_prompt:
+            with st.spinner("Đang tạo ảnh bằng DALL·E..."):
+                image_url = generate_image(image_prompt)
+                st.image(image_url, caption="Ảnh tạo bởi DALL·E", use_column_width=True)
