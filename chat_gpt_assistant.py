@@ -83,8 +83,6 @@ if prompt := st.chat_input("Bạn nhập nội dung cần trao đổi ở đây 
     model=model,
     messages=messages,
     stream=True
-)
-
     )
 
     # Ghi lại phản hồi của trợ lý vào biến
