@@ -13,4 +13,4 @@ import os
 from PIL import Image
 
 # ✅ API Key GPT
-client = OpenAI(api_key=st.secrets["OPENAI_API_KEY"])")
+client = OpenAI(api_key=st.secrets["OPENAI_API_KEY"])
