@@ -1,6 +1,7 @@
 streamlit
 pandas
-openpyxl
-requests
+numpy
 matplotlib
-seaborn
+openai
+requests
+beautifulsoup4
