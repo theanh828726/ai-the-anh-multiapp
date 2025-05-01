@@ -1,38 +1,28 @@
+# streamlit_app.py
 import streamlit as st
 import importlib
 import os
 
-# ===============================
-# Thiết lập cấu hình trang
-# ===============================
-st.set_page_config(
-    page_title="AI Thế Anh – MultiApp Suite",
-    layout="wide",
-    page_icon="🤖"
-)
+st.set_page_config(page_title="AI Thế Anh – MultiApp Suite", layout="wide")
 
-st.image("logo.png", use_container_width=True)
-st.markdown("## 💼 AI Thế Anh – Trợ lý AI đa nhiệm")
+st.sidebar.title("📌 Menu Tính năng")
+st.title("🚀 AI Thế Anh – MultiApp Dashboard")
+st.markdown("Hệ thống gồm nhiều công cụ tự động hóa và phân tích thông minh.")
 
-# ===============================
-# Khởi tạo multi-app
-# ===============================
-APP_DIR = "app_modules"
-app_files = [f for f in os.listdir(APP_DIR) if f.endswith(".py") and not f.startswith("__")]
+# Tìm các app con
+apps = {}
+for file in os.listdir():
+    if file.endswith(".py") and file not in ["streamlit_app.py", "__init__.py"]:
+        try:
+            mod = importlib.import_module(file.replace(".py", ""))
+            if hasattr(mod, "app"):
+                apps[file.replace(".py", "").replace("_", " ").title()] = mod
+        except Exception as e:
+            st.sidebar.warning(f"⚠️ Không thể import {file}: {e}")
 
-# Tên hiển thị sidebar
-app_display_names = {
-    "promptbot.py": "🎨 PromptBot – Tạo hình ảnh",
-    "tax_lookup.py": "🧾 Tra cứu mã số thuế",
-    "analysis_dashboard.py": "📊 Dashboard phân tích dữ liệu",
-    "chat_gpt_assistant.py": "🤖 Trợ lý ChatGPT",
-    "download_app.py": "📁 Tải file từ Excel"
-}
+# Chọn app
+selection = st.sidebar.radio("🔽 Chọn ứng dụng", list(apps.keys()))
 
-selected_file = st.sidebar.selectbox("🔍 Chọn chức năng", [app_display_names.get(f, f) for f in app_files])
-
-# Mapping lại để lấy tên file từ tên hiển thị
-selected_filename = [k for k, v in app_display_names.items() if v == selected_file][0]
-module_path = f"{APP_DIR}.{selected_filename.replace('.py','')}"
-module = importlib.import_module(module_path)
-module.app()
+# Chạy app
+if selection:
+    apps[selection].app()
