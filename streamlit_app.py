@@ -1,11 +1,4 @@
-from app_modules import (
-    promptbot,
-    tax_lookup,
-    analysis_dashboard,
-    chat_gpt_assistant,
-    download_app
-)
-
+from app_modules import promptbot, tax_lookup, analysis_dashboard, chat_gpt_assistant, download_app
 import streamlit as st
 
 st.set_page_config(page_title="AI Thế Anh - Ứng dụng đa năng", layout="wide")
