@@ -1,5 +1,6 @@
 import streamlit as st
 
+def run():
 # ✅ Hiển thị logo dùng chung
 from pathlib import Path
 logo_path = Path("logo.png")
@@ -12,7 +13,7 @@ import pandas as pd
 import requests
 import os
 
-st.title("📥 TẢI FILE TỰ ĐỘNG TỪ LINK TRONG EXCEL")
+st.title("📥 TẢI FILE TỰ ĐỘNG TỪ LINK TRONG EXCEL - AI Thế Anh")
 
 uploaded_file = st.file_uploader("📂 Chọn file Excel chứa đường dẫn", type=["xlsx"])
 

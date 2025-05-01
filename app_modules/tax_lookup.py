@@ -7,6 +7,7 @@ from PIL import Image
 from io import BytesIO
 import time
 
+def run():
 # Set page config immediately
 st.set_page_config(page_title="TRA CỨU MST TỰ ĐỘNG - AI Thế Anh", layout="wide")
 
