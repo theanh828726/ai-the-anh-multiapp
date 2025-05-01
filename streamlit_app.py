@@ -1,6 +1,5 @@
 import streamlit as st
 
-# Import từng module từ thư mục app_modules
 from app_modules import (
     promptbot,
     tax_lookup,
