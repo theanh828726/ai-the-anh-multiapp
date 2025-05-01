@@ -1,5 +1,3 @@
-import streamlit as st
-
 from app_modules import (
     promptbot,
     tax_lookup,
@@ -8,37 +6,25 @@ from app_modules import (
     download_app
 )
 
-st.set_page_config(
-    page_title="AI Thế Anh – Ứng dụng đa năng",
-    page_icon="💡",
-    layout="wide"
-)
+import streamlit as st
 
-# Giao diện bên trái
-st.sidebar.title("💡 AI Thế Anh – Ứng dụng đa năng")
-st.sidebar.markdown("### Chọn chức năng:")
-option = st.sidebar.radio(
-    "Chức năng:",
-    (
-        "📁 Tải file",
-        "🤖 PromptBot",
-        "📊 Phân tích dữ liệu",
-        "🔍 Tra cứu mã số thuế",
-        "💬 Trợ lý ChatGPT"
-    ),
-    label_visibility="collapsed"
-)
+st.set_page_config(page_title="AI Thế Anh - Ứng dụng đa năng", layout="wide")
 
-# Gọi các module tương ứng
-if option == "📁 Tải file":
+st.sidebar.markdown("### 🧠 AI Thế Anh – Ứng dụng đa năng")
+app_choice = st.sidebar.radio("Chọn chức năng:", (
+    "📂 Tải file", "🤖 PromptBot", "📊 Phân tích dữ liệu", "🧾 Tra cứu mã số thuế", "💬 Trợ lý ChatGPT"))
+
+if app_choice == "📂 Tải file":
     download_app.run()
-elif option == "🤖 PromptBot":
+
+elif app_choice == "🤖 PromptBot":
     promptbot.run()
-elif option == "📊 Phân tích dữ liệu":
+
+elif app_choice == "📊 Phân tích dữ liệu":
     analysis_dashboard.run()
-elif option == "🔍 Tra cứu mã số thuế":
+
+elif app_choice == "🧾 Tra cứu mã số thuế":
     tax_lookup.run()
-elif option == "💬 Trợ lý ChatGPT":
+
+elif app_choice == "💬 Trợ lý ChatGPT":
     chat_gpt_assistant.run()
-else:
-    st.warning("Hãy chọn một chức năng từ menu.")
