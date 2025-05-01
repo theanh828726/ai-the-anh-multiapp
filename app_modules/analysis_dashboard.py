@@ -3,6 +3,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import io
 
+def run():
 st.title('Dashboard Phân tích dữ liệu - AI Thế Anh ')
 
 uploaded_file = st.file_uploader("Chọn file Excel cần phân tích", type=["xlsx"])
