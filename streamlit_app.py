@@ -1,28 +1,34 @@
-# streamlit_app.py
 import streamlit as st
 import importlib
 import os
 
 st.set_page_config(page_title="AI Thế Anh – MultiApp Suite", layout="wide")
-
-st.sidebar.title("📌 Menu Tính năng")
+st.image("logo.png", use_column_width=True)
 st.title("🚀 AI Thế Anh – MultiApp Dashboard")
-st.markdown("Hệ thống gồm nhiều công cụ tự động hóa và phân tích thông minh.")
+st.markdown("Hệ thống gồm nhiều công cụ hỗ trợ doanh nghiệp bằng trí tuệ nhân tạo.")
 
-# Tìm các app con
-apps = {}
-for file in os.listdir():
-    if file.endswith(".py") and file not in ["streamlit_app.py", "__init__.py"]:
-        try:
-            mod = importlib.import_module(file.replace(".py", ""))
-            if hasattr(mod, "app"):
-                apps[file.replace(".py", "").replace("_", " ").title()] = mod
-        except Exception as e:
-            st.sidebar.warning(f"⚠️ Không thể import {file}: {e}")
+# ===========================
+# KHAI BÁO DANH SÁCH APP
+# ===========================
+apps = {
+    "🎨 PromptBot – Tạo hình ảnh": "promptbot",
+    "🧾 Tra cứu mã số thuế": "tax_lookup",
+    "📊 Phân tích dữ liệu": "analysis_dashboard",
+    "🤖 Trợ lý ChatGPT": "chat_gpt_assistant",
+    "📥 Tải file tự động": "download_app"
+}
 
-# Chọn app
-selection = st.sidebar.radio("🔽 Chọn ứng dụng", list(apps.keys()))
+# ===========================
+# SIDEBAR CHỌN APP
+# ===========================
+choice = st.sidebar.selectbox("📂 Chọn chức năng", list(apps.keys()))
+module_name = apps[choice]
 
-# Chạy app
-if selection:
-    apps[selection].app()
+# ===========================
+# IMPORT & CHẠY APP
+# ===========================
+module = importlib.import_module(module_name)
+if hasattr(module, "app"):
+    module.app()
+else:
+    st.error(f"❌ Ứng dụng '{choice}' chưa có hàm app(). Vui lòng kiểm tra lại.")
