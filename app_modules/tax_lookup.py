@@ -1,10 +1,12 @@
+
 import streamlit as st
 
 def run():
-    st.title("🧾 Tra cứu mã số thuế")
-    tax_code = st.text_input("Nhập mã số thuế:")
+    st.title("🔍 Tra cứu mã số thuế (demo)")
+    st.write("Chức năng tra cứu MST thực tế có captcha, sẽ được cập nhật.")
+    mst = st.text_input("Nhập mã số thuế:")
     if st.button("Tra cứu"):
-        if tax_code:
-            st.success(f"✅ Kết quả tra cứu MST: {tax_code}")
+        if mst:
+            st.success(f"✅ Đã tra cứu mã: {mst}")
         else:
             st.warning("Vui lòng nhập mã số thuế.")
